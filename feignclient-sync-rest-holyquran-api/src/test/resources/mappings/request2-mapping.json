@@ -1,0 +1,15 @@
+{
+  "name": "400-request2",
+  "request": {
+    "method": "GET",
+    "url": "/v1/surah/1141/en.asad"
+  },
+  "response": {
+    "status": 400,
+    "fixedDelayMilliseconds": "200",
+    "bodyFileName": "not_found_bad_request.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "503-request3",
+  "request": {
+    "method": "GET",
+    "url": "/v1/surah/1150/en.asad"
+  },
+  "response": {
+    "status": 503,
+    "fixedDelayMilliseconds": "200",
+    "bodyFileName": "server_not_available.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

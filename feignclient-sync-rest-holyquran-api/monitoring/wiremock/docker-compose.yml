@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  docker-wiremock:
+    build: .
+    container_name: docker-wiremock
+    volumes:
+      - ./__files:/home/wiremock/__files
+      - ./mappings:/home/wiremock/mappings
+    ports:
+      - "9021:9021"  # Adjusted port mapping
+    deploy:
+      resources:
+        limits:
+          cpus: '500m' # Example: limit to 50% of one CPU core
+          memory: '256M' # Example: limit to 256 megabytes of memory
+    networks:
+      - myNetwork
+
+networks:
+  myNetwork:
+    driver: bridge

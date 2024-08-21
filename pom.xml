@@ -10,7 +10,8 @@
 	<description>A sample project exposing rest endpoints for managing product list in dynamodb</description>
 	<modules>
 		<module>product-rest-api-aws-with-dynamodb</module>
-	</modules>
+        <module>feignclient-sync-rest-holyquran-api</module>
+    </modules>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

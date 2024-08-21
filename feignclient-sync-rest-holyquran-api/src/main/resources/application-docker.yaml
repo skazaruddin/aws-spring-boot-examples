@@ -1,0 +1,15 @@
+api:
+  quranapi:
+    host: http://docker-wiremock:8080
+    connection:
+      connectTimeoutSeconds: 10
+      readTimeoutSeconds: 50
+      writeTimeoutSeconds: 50
+      keep-alive: true
+      tcp-no-delay: true
+
+spring:
+  boot:
+    admin:
+      client:
+        url: http://springadmin:9085

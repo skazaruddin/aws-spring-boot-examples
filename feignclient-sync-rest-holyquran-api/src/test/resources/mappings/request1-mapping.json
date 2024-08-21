@@ -1,0 +1,15 @@
+{
+  "name": "200-request1",
+  "request": {
+    "method": "GET",
+    "url": "/v1/surah/114/en.asad"
+  },
+  "response": {
+    "status": 200,
+    "fixedDelayMilliseconds": "200",
+    "bodyFileName": "en-surah-114.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  holyquranapi:
+    build: .
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - api.quranapi.host=http://docker-wiremock:9021
+    container_name: holyquran-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - docker-wiremock
+    deploy:
+      resources:
+        limits:
+          cpus: '300m' # Example: limit to 400m milli cpu, given a core is of 1000 millicpu
+          memory: '256M' # Example: limit to 512 megabytes of memory
+    networks:
+      - myNetwork
+
+  docker-wiremock:
+    build: ../monitoring/wiremock/
+    container_name: docker-wiremock
+    volumes:
+      - ../monitoring/wiremock/__files:/home/wiremock/__files
+      - ../monitoring/wiremock/mappings:/home/wiremock/mappings
+    ports:
+      - "9021:9021"  # Adjusted port mapping
+    deploy:
+      resources:
+        limits:
+          cpus: '500m' # Example: limit to 50% of one CPU core
+          memory: '256M' # Example: limit to 256 megabytes of memory
+    networks:
+      - myNetwork
+
+#  springadmin:
+#    image: codecentric/spring-boot-admin:3.0
+#    ports:
+#      - "9085:9085"
+#    environment:
+#      SPRING_BOOT_ADMIN_CONTEXT_PATH: /
+#    command: --spring.boot.admin.context-path=/
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '500m' # Example: limit to 50% of one CPU core
+#          memory: '512M' # Example: limit to 512 megabytes of memory
+#    networks:
+#      - myNetwork
+#    volumes:
+#      - ../monitoring/spring-boot-admin/application.yml:/application.yml
+#      - ../monitoring/spring-boot-admin/application.properties:/application.properties
+
+
+  prometheus:
+    image: prom/prometheus:v2.44.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../monitoring/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+    networks:
+      - myNetwork
+
+  grafana:
+      image: grafana/grafana-oss:latest
+      container_name: grafana
+      environment:
+        - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+        - GF_SECURITY_ADMIN_PASSWORD=admin
+      ports:
+        - "3000:3000"
+      restart: unless-stopped
+      volumes:
+        - ../monitoring/grafana/provisioning/:/etc/grafana/provisioning/
+      networks:
+        - myNetwork
+networks:
+  myNetwork:
+    driver: bridge
