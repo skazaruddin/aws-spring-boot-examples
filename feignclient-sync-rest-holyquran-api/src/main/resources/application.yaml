@@ -81,6 +81,6 @@ spring:
 
 management:
   endpoints:
-   web:
-     exposure:
-      include: "*"
+    web:
+      exposure:
+        include: "*"

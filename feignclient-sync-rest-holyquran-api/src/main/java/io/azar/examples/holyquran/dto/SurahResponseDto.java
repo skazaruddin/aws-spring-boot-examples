@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Data
@@ -14,13 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 public class SurahResponseDto {
 
-    private int code;
-    private String status;
-    private Data data;
-
-    // Constructors, getters, and setters
-    @lombok.Data
-    public static class Data {
         private int number;
         private String name;
         @JsonProperty("englishName")
@@ -34,8 +26,7 @@ public class SurahResponseDto {
         private List<Ayah> ayahs;
         private Edition edition;
 
-        // Constructors, getters, and setters
-    }
+
 
     @lombok.Data
     public static class Ayah {
@@ -68,4 +59,3 @@ public class SurahResponseDto {
         // Constructors, getters, and setters
     }
 }
-

@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.azar</groupId>
-	<artifactId>aws-spring-boot-examples</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>sample-product-rest-api-aws-with-dynamodb</name>
-	<description>A sample project exposing rest endpoints for managing product list in dynamodb</description>
-	<modules>
-		<module>product-rest-api-aws-with-dynamodb</module>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.azar</groupId>
+    <artifactId>aws-spring-boot-examples</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>aws-spring-boot-examples</name>
+    <description>List of sample projects demonstrating usage of AWS services using Spring Boot</description>
+    <modules>
+        <module>product-rest-api-aws-with-dynamodb</module>
         <module>feignclient-sync-rest-holyquran-api</module>
+        <module>site</module>
     </modules>
-	<properties>
-		<java.version>17</java.version>
-	</properties>
+    <properties>
+        <java.version>17</java.version>
+        <awssamples.pmd.version>3.24.0</awssamples.pmd.version>
+        <awssamples.pmd-impl.version>7.4.0</awssamples.pmd-impl.version>
+        <awssamples.project-info.version>3.7.0</awssamples.project-info.version>
+        <awssamples.rat.version>0.16.1</awssamples.rat.version>
+    </properties>
+
 
 </project>

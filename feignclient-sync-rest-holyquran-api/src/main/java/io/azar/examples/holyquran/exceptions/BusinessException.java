@@ -1,6 +1,7 @@
 package io.azar.examples.holyquran.exceptions;
 
 import io.azar.examples.holyquran.dto.ApiError;
+
 import org.springframework.core.NestedRuntimeException;
 
 public class BusinessException extends NestedRuntimeException {
@@ -10,6 +11,7 @@ public class BusinessException extends NestedRuntimeException {
         super("Business Exception");
         this.apiError = apiError;
     }
+
     public BusinessException(String msg, ApiError apiError) {
         super(msg);
         this.apiError = apiError;

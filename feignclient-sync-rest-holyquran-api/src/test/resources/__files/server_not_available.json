@@ -1,5 +1,4 @@
 {
-  "code":503,
-  "status":"SERVICE NOT AVAILABLE",
-  "data":"The service is temporarily unavailable."
+  "code": 503,
+  "description": "The service is temporarily unavailable."
 }

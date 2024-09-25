@@ -1,6 +1,7 @@
 package io.azar.examples.holyquran.exceptions;
 
 import io.azar.examples.holyquran.dto.ApiError;
+
 import org.springframework.core.NestedRuntimeException;
 
 public class TechnicalException extends NestedRuntimeException {

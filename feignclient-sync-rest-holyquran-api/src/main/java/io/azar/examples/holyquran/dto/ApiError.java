@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ApiError {
     private Integer code;
-    private String status;
-    private String data;
+    private String description;
 }

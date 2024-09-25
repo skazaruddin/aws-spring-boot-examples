@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients
 public class HolyQuranApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(HolyQuranApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HolyQuranApplication.class, args);
+    }
 }

@@ -1,5 +1,4 @@
 {
-  "code":404,
-  "status":"NOT FOUND",
-  "data":"Surat number should be between 1 and 114."
+  "code": 404,
+  "description": "Surat number should be between 1 and 114."
 }

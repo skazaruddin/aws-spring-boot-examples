@@ -35,25 +35,6 @@ services:
     networks:
       - myNetwork
 
-#  springadmin:
-#    image: codecentric/spring-boot-admin:3.0
-#    ports:
-#      - "9085:9085"
-#    environment:
-#      SPRING_BOOT_ADMIN_CONTEXT_PATH: /
-#    command: --spring.boot.admin.context-path=/
-#    deploy:
-#      resources:
-#        limits:
-#          cpus: '500m' # Example: limit to 50% of one CPU core
-#          memory: '512M' # Example: limit to 512 megabytes of memory
-#    networks:
-#      - myNetwork
-#    volumes:
-#      - ../monitoring/spring-boot-admin/application.yml:/application.yml
-#      - ../monitoring/spring-boot-admin/application.properties:/application.properties
-
-
   prometheus:
     image: prom/prometheus:v2.44.0
     container_name: prometheus
@@ -65,18 +46,18 @@ services:
       - myNetwork
 
   grafana:
-      image: grafana/grafana-oss:latest
-      container_name: grafana
-      environment:
-        - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
-        - GF_SECURITY_ADMIN_PASSWORD=admin
-      ports:
-        - "3000:3000"
-      restart: unless-stopped
-      volumes:
-        - ../monitoring/grafana/provisioning/:/etc/grafana/provisioning/
-      networks:
-        - myNetwork
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+      - ../monitoring/grafana/provisioning/:/etc/grafana/provisioning/
+    networks:
+      - myNetwork
 networks:
   myNetwork:
     driver: bridge

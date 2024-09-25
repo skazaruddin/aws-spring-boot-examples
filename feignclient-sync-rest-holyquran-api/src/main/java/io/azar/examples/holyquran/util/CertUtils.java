@@ -37,14 +37,16 @@ public class CertUtils {
         KeyStore truststore = KeyStore.getInstance("PKCS12");
         truststore.load(null, null);
 
-        try (StringReader stringReader = new StringReader(concatenatedPemCertificates); PEMParser pemParser = new PEMParser(stringReader)) {
+        try (StringReader stringReader = new StringReader(concatenatedPemCertificates);
+             PEMParser pemParser = new PEMParser(stringReader)) {
             List<X509Certificate> certificates = new ArrayList<>();
             int aliasCounter = 1;
             Object pemObject;
             while ((pemObject = pemParser.readObject()) != null) {
                 if (pemObject instanceof X509CertificateHolder) {
                     X509CertificateHolder certificateHolder = (X509CertificateHolder) pemObject;
-                    X509Certificate certificate = new JcaX509CertificateConverter().getCertificate(certificateHolder);
+                    X509Certificate certificate =
+                        new JcaX509CertificateConverter().getCertificate(certificateHolder);
                     String alias = "cert-" + aliasCounter++;
                     truststore.setCertificateEntry(alias, certificate);
                 }
@@ -75,7 +77,8 @@ public class CertUtils {
      * @return List of X.509 certificates loaded from the PEM string.
      * @throws Exception If there is an issue during the certificate loading or conversion.
      */
-    public static List<X509Certificate> loadCertificates(String concatenatedPemCertificates) throws Exception {
+    public static List<X509Certificate> loadCertificates(String concatenatedPemCertificates)
+        throws Exception {
         List<X509Certificate> certificates = new ArrayList<>();
 
         try (PEMParser pemParser = new PEMParser(new StringReader(concatenatedPemCertificates))) {
@@ -83,7 +86,8 @@ public class CertUtils {
             while ((pemObject = pemParser.readObject()) != null) {
                 if (pemObject instanceof X509CertificateHolder) {
                     X509CertificateHolder certificateHolder = (X509CertificateHolder) pemObject;
-                    X509Certificate certificate = new JcaX509CertificateConverter().getCertificate(certificateHolder);
+                    X509Certificate certificate =
+                        new JcaX509CertificateConverter().getCertificate(certificateHolder);
                     certificates.add(certificate);
                 }
                 // You can handle other types of PEM objects if needed
@@ -91,6 +95,9 @@ public class CertUtils {
         }
 
         return certificates;
+    }
+
+    private CertUtils() {
     }
 
 

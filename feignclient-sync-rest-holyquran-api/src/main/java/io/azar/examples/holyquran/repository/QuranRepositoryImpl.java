@@ -2,6 +2,7 @@ package io.azar.examples.holyquran.repository;
 
 import io.azar.examples.holyquran.client.QuranApiClient;
 import io.azar.examples.holyquran.dto.SurahResponseDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
